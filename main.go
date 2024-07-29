@@ -38,6 +38,7 @@ func main() {
 	mux.HandleFunc("GET /v1/healthz", readiness)
 	mux.HandleFunc("GET /v1/err", errorHandler)
 	mux.HandleFunc("POST /v1/users", apiCfg.createUsers)
+	mux.HandleFunc("GET /v1/users", apiCfg.getUser)
 
 	//Create server
 	server := &http.Server{
