@@ -40,6 +40,7 @@ func main() {
 	mux.HandleFunc("POST /v1/users", apiCfg.createUsers)
 	mux.HandleFunc("GET /v1/users", apiCfg.middlewareAuth(apiCfg.getUser))
 	mux.HandleFunc("POST /v1/feeds", apiCfg.middlewareAuth(apiCfg.createFeeds))
+	mux.HandleFunc("GET /v1/feeds", apiCfg.getFeeds)
 
 	//Create server
 	server := &http.Server{
