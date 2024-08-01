@@ -5,6 +5,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"time"
 
 	"github.com/joho/godotenv"
 	_ "github.com/lib/pq"
@@ -32,6 +33,8 @@ func main() {
 	apiCfg := apiConfig{
 		DB: dbQueries,
 	}
+
+	go startScraping(dbQueries, 10, time.Minute)
 
 	//Handlers
 	mux := http.NewServeMux()
